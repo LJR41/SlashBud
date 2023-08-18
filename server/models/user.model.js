@@ -1,5 +1,6 @@
 // 1. import mongoose
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 // 2.1 create the schema with all keys & validation
 const UserSchema = new mongoose.Schema({
@@ -28,6 +29,10 @@ const UserSchema = new mongoose.Schema({
         required: [true, "Password is req"],
         minlength: [2, "Password must be 2 characters or more "]
     },
+    lists: [{
+        type: Schema.Types.ObjectId,
+        ref: "List"
+    }]
     
 }, {timestamps: true}) // 2.2 enable the timestamp for createdAt & updatedAt
 
