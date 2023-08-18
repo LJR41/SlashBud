@@ -7,12 +7,12 @@ module.exports.apiTest = (req, res)=>{
 }
 
 module.exports.newList = (req,res) => {
-    const userId = req.params.userId
+    const userId = req.params.id
     const newList = new List(req.body)
     newList.user = userId
     newList.save()
         .then(list=>{
-            const user = User.findOne({_id:userId})
+            const user = User.findOne({_id:id})
                 .then(foundUser=>{
                     foundUser.lists.push(newList)
                     foundUser.save()
