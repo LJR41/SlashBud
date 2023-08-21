@@ -29,3 +29,5 @@ module.exports.test = (req,res) =>{
         })
         .catch(err => res.status(400).json(err))
 }
+
+//test richard working on learning git stuff
