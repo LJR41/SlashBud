@@ -11,6 +11,9 @@ function App() {
   return (
     <div className="App">
       <p>First Merge Commit</p>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
       <APITest/>
     </div>
   );
