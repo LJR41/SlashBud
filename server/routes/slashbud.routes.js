@@ -6,7 +6,9 @@ const routes = (app) =>{
     app.get('/api/testing', UserController.apiTest)
     app.get('/api/users', UserController.allUsers)
     app.post('/api/users', UserController.newUser)
-    app.get('/api/test', UserController.test)
+    app.post('/api/games', UserController.allGames)
+    app.post('/api/genres', UserController.allGenres)
+    app.post('/api/platforms', UserController.allPlatforms)
 
     // List Routes
     app.get('/api/lists', ListController.apiTest )

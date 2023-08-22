@@ -13,6 +13,21 @@ app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+// Listen on a specific host via the HOST environment variable
+// var host = process.env.HOST || '127.0.0.1';
+// Listen on a specific port via the PORT environment variable
+// var port = process.env.PORT || 8080;
+
+// var cors_proxy = require('cors-anywhere');
+// cors_proxy.createServer({
+//     originWhitelist: [], // Allow all origins
+//     requireHeader: ['origin', 'x-requested-with'],
+//     removeHeaders: ['cookie', 'cookie2']
+// }).listen(port, host, function() {
+//     console.log('Running CORS Anywhere on ' + host + ':' + port);
+// });
+
+
 // 5. import routes (after routes are done -- may need to complete the models & the backbone of the controller first)
 const routes = require("./routes/slashbud.routes")
 routes(app)
