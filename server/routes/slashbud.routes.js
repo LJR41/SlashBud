@@ -1,11 +1,14 @@
 // 1. import the controller
 const UserController = require("../controllers/user.controller")
 const ListController = require("../controllers/list.controller")
+
+
 // 2. export a function that reads one argument (app)
 const routes = (app) =>{
     app.get('/api/testing', UserController.apiTest)
     app.get('/api/users', UserController.allUsers)
-    app.post('/api/users', UserController.newUser)
+    app.post('/api/register', UserController.register)
+    app.post('/api/login', UserController.login)
     app.get('/api/test', UserController.test)
 
     // List Routes
