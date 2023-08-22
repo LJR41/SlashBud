@@ -12,7 +12,7 @@ module.exports.newList = (req,res) => {
     newList.user = userId
     newList.save()
         .then(list=>{
-            const user = User.findOne({_id:id})
+            const user = User.findOne({_id:userId})
                 .then(foundUser=>{
                     foundUser.lists.push(newList)
                     foundUser.save()
