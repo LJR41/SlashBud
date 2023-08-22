@@ -1,12 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-import GameSearch from './Components/GameSearch';
+
+import { Routes, Route} from 'react-router-dom';
+import HomePage from './views/HomePage';
+// import { CarouselWithContent } from './CarouselWithContent'
+
+import APITest from './Components/APITest';
+
 
 function App() {
   return (
     <div className="App">
       <p>First Merge Commit</p>
-      <GameSearch/>
+      <APITest/>
     </div>
   );
 }
