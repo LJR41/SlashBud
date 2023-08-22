@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.hide{
+  overflow: hidden;
+  height: 500px;
+  width: 750px;
+  margin: 20px;
+  margin-left: 160px;
+}
+
+.space{
+  padding: .1px;
+}
