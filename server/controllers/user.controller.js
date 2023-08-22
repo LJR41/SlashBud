@@ -21,11 +21,5 @@ module.exports.newUser = (req,res) =>{
 }
 
 module.exports.test = (req,res) =>{
-    fetch(`https://www.giantbomb.com/api/game/3030-4725/?api_key=1adb8bb2ac75173966a5fdace6fc55e3568c915c&format=json`, {headers :{ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin' : '*', 'Access-Control-Allow-Credentials':true} })
-        .then(newUser =>newUser.json())
-        .then(data => {
-            console.log(data)
-            res.json(data)
-        })
-        .catch(err => res.status(400).json(err))
+    
 }
