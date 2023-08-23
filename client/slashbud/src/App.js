@@ -5,6 +5,8 @@ import HomePage from './views/HomePage';
 import APITest from './Components/GameSearch';
 import { Routes, Route, Link } from 'react-router-dom';
 import SignIn from './Components/SignIn';
+import EditPage from './Components/EditPage';
+import AllListPage from './Components/AllListPage';
 
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />        
         <Route path='/register' element={<SignIn />} />
+        <Route path='/edit' element={<EditPage />} />
+        <Route path='/alllist' element={<AllListPage />} />
       </Routes>
       <APITest/>
     </div>
