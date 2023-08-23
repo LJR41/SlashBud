@@ -20,6 +20,8 @@ const routes = (app) =>{
     // List Routes
     app.get('/api/lists', ListController.apiTest )
     app.post('/api/lists/:id', ListController.newList)
+    app.get('/api/lists/:id', ListController.oneList)
+    app.delete('/api/list/:id',ListController.deleteList)
 }
 // 3. include all the routes with the corresponding logic from controller
 module.exports = routes
