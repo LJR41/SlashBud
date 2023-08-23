@@ -28,35 +28,35 @@ module.exports.register = (req, res) => {
     const user = new User(req.body)
     user.save()
         .then(() => {
-            res.cookie("usertoken", jwt.sign({ _id: user._id }, secret), {httpOnly: true})
-            .json({msg: "Success in creating a user", user:user})
+            res.cookie("usertoken", jwt.sign({ _id: user._id }, secret), { httpOnly: true })
+                .json({ msg: "Success in creating a user", user: user })
         })
         .catch(err => res.json(err))
 }
 
 module.exports.login = (req, res) => {
-    User.findOne({email: req.body.email})
-    .then(user=> {
-        if(user === null) {
-            res.json({msg:"invalid login info"})
-        } else {
-            bcrypt.compare(req.body.password, user.password)
-            .then(passwordIsValid => {
-                if(passwordIsValid) {
-                    res.cookie("usertoken", jwt.sign({_id: user._id}, secret), {httpOnly:true})
-                    .json({msg:"success"})
-                } else {
-                    res.json({msg:"Invalid login Info"})
-                }
-            })
-            .catch(err=> res.json({msg: "invalid login attempt"}))
-        }
-    })
-    .catch(err=> res.json(err))
+    User.findOne({ email: req.body.email })
+        .then(user => {
+            if (user === null) {
+                res.json({ msg: "invalid login info" })
+            } else {
+                bcrypt.compare(req.body.password, user.password)
+                    .then(passwordIsValid => {
+                        if (passwordIsValid) {
+                            res.cookie("usertoken", jwt.sign({ _id: user._id }, secret), { httpOnly: true })
+                                .json({ msg: "success" })
+                        } else {
+                            res.json({ msg: "Invalid login Info" })
+                        }
+                    })
+                    .catch(err => res.json({ msg: "invalid login attempt" }))
+            }
+        })
+        .catch(err => res.json(err))
 }
 
 // module.exports.test = (req, res) => {
-    
+
 // module.exports.newUser = (req, res) => {
 //     User.create(req.body)
 //         .then(newUser => res.json(newUser)
@@ -146,7 +146,31 @@ module.exports.searchGames = (req, res) => {
         })
         .then(response => {
             return response.json();
+        })
+        .then(response => {
+            return res.json(response)
+        })
+        .catch(err => {
+            console.error(err);
+        });
+}
 
+module.exports.searchSummary = (req, res) => {
+    const key = process.env.APIKEY
+    const name = req.body.oneGame
+    console.log(name)
+
+    fetch(
+        "https://cigkr3iwhd.execute-api.us-west-2.amazonaws.com/production/v4/games",
+        {
+            method: 'POST',
+            headers: {
+                'x-api-key': `${key}`,
+            },
+            body: `search "${name}"; fields name, summary;`
+        })
+        .then(response => {
+            return response.json();
         })
         .then(response => {
             return res.json(response)
