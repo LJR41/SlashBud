@@ -13,6 +13,7 @@ const APITest = () => {
         axios.post(`http://localhost:8000/api/games`)
             .then(response => {
                 setAllGames(response.data)
+                // setOneGame(response.data.name)
             })
             .catch(err => console.log(JSON.stringify(err)))
 
@@ -85,7 +86,7 @@ const APITest = () => {
 
     return (
         <div>
-            <div style={{ display: 'inline-flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div >
                 <form onSubmit={handleSubmit}>
                     <button type="submit">Search</button>
                     <input type="text" placeholder="Type here..." value={gameSearch} onChange={e => { setGameSearch(e.target.value) }} />
@@ -105,7 +106,7 @@ const APITest = () => {
                     </select>
                 </form>
             </div>
-            <div style={{ display: 'inline-flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <table>
                     <thead>
                         <tr>
@@ -117,29 +118,27 @@ const APITest = () => {
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         {foundGame ?
                             foundGame.map((eachGame, Idx) => {
                                 return (
-
                                     <tr>
                                         <td>
                                             {eachGame.name}
                                         </td>
                                         <td>
-                                            {eachGame.rating}
+                                            { eachGame.rating?Math.round(eachGame.rating): "N/A"
+                                            }
                                         </td>
                                     </tr>
-
                                 )
                             })
-                            : <td>Search for a Game</td>}</tbody>
+                            : <tr>Search for a Game</tr>}</tbody>
                 </table>
 
             </div>
-            <div style={{ display: 'inline-flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
-
-                <table>
+            <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <table >
                     <thead>
                         <tr>
                             <th>
