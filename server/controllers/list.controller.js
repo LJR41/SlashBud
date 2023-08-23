@@ -21,3 +21,15 @@ module.exports.newList = (req,res) => {
         })
         .catch(err => res.status(400).json(err))
 }
+
+module.exports.oneList = (req, res) => {
+    const user = User.findOne({ _id: req.params.id }).populate("lists")
+    .then(oneUser => res.json(oneUser))
+    .catch(err => res.status(400).json(err))
+}
+
+module.exports.deleteList = (req, res)=>{
+    List.deleteOne({_id: req.params.id})
+    .then(status => res.json(status))
+    .catch(err => res.status(400).json(err))
+}
