@@ -131,3 +131,27 @@ module.exports.allPlatforms = (req, res) => {
             console.error(err);
         });
 }
+
+module.exports.searchGames = (req, res) => {
+    const key = process.env.APIKEY
+    const name = req.body.gameSearch
+    fetch(
+        "https://cigkr3iwhd.execute-api.us-west-2.amazonaws.com/production/v4/games",
+        {
+            method: 'POST',
+            headers: {
+                'x-api-key': `${key}`,
+            },
+            body: `search "${name}";fields name,rating;`
+        })
+        .then(response => {
+            return response.json();
+
+        })
+        .then(response => {
+            return res.json(response)
+        })
+        .catch(err => {
+            console.error(err);
+        });
+}
