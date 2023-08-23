@@ -11,9 +11,11 @@ const routes = (app) =>{
     app.post('/api/login', UserController.login)
     // app.get('/api/test', UserController.test)
     // app.post('/api/users', UserController.newUser)
+    // Game Search routes
     app.post('/api/games', UserController.allGames)
     app.post('/api/genres', UserController.allGenres)
     app.post('/api/platforms', UserController.allPlatforms)
+    app.post('/api/search/game', UserController.searchGames)
 
     // List Routes
     app.get('/api/lists', ListController.apiTest )
