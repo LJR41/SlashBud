@@ -1,6 +1,8 @@
 // 1. import the controller
 const UserController = require("../controllers/user.controller")
 const ListController = require("../controllers/list.controller")
+
+const User = require("../models/user.model")
 const {authenticate} = require('../configs/jwt')
 
 
@@ -19,6 +21,7 @@ const routes = (app) =>{
     app.post('/api/genres', UserController.allGenres)
     app.post('/api/platforms', UserController.allPlatforms)
     app.post('/api/search/game', UserController.searchGames)
+    app.post('/api/search/summary', UserController.searchSummary)
 
     // List Routes
     app.get('/api/lists', ListController.apiTest )
