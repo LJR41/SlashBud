@@ -9,13 +9,14 @@ module.exports.apiTest = (req, res)=>{
 module.exports.newList = (req,res) => {
     const userId = req.params.id
     const newList = new List(req.body)
-    newList.user = userId
+    newList.listOwner = userId
     newList.save()
         .then(list=>{
             const user = User.findOne({_id:userId})
                 .then(foundUser=>{
+                    console.log(foundUser)
                     foundUser.lists.push(newList)
-                    foundUser.save()
+                    foundUser.save({ validateBeforeSave: false })
                     .then(response => res.json(response))
                 })
         })
