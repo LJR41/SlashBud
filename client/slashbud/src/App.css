@@ -32,19 +32,25 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.hide{
+.hide {
   overflow: hidden;
-  height: 500px;
-  width: 750px;
+  height: 450px;
+  width: 800px;
   margin: 20px;
-  margin-left: 160px;
+  margin-left: 550px;
+
 }
 
-.space{
+.space {
   padding: .1px;
+}
+
+.size {
+  font-size: 15px;
 }
