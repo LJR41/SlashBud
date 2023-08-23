@@ -1,6 +1,7 @@
 // 1. import the controller
 const UserController = require("../controllers/user.controller")
 const ListController = require("../controllers/list.controller")
+const {authenticate} = require('../configs/jwt')
 
 
 // 2. export a function that reads one argument (app)
@@ -9,6 +10,8 @@ const routes = (app) =>{
     app.get('/api/users', UserController.allUsers)
     app.post('/api/register', UserController.register)
     app.post('/api/login', UserController.login)
+    app.get("/api/users/loggedin", authenticate, UserController.loggedUser)
+    app.get('/api/users/logout', UserController.logout)
     // app.get('/api/test', UserController.test)
     // app.post('/api/users', UserController.newUser)
     // Game Search routes

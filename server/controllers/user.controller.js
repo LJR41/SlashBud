@@ -18,6 +18,20 @@ module.exports.oneUser = (req, res) => {
         .then(oneUser => res.json(oneUser))
         .catch(err => res.status(400).json(err))
 }
+
+module.exports.loggedUser = (req,res) => {
+    const decodedJWT = jwt.decode(req.cookies.usertoken, {complete:true})
+    User.findById(decodedJWT.payload._id)
+    .then(user=> res.json({user}))
+    .catch(err=> res.json(err))
+}
+
+module.exports.logout = (req,res) => {
+    res.cookie("usertoken", jwt.sign({_id:""}, secret), {
+        httpOnly:true,
+        maxAge:0
+    }).json({msg:"User logged out"})
+}
 // module.exports.newUser = (req, res) => {
 //     User.create(req.body)
 //         .then(newUser => res.json(newUser)
