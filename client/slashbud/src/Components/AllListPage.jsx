@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const AllListPage = () => {
     const [isCharacters, setIsCharacters] = useState(false)
     const [isGames, setIsGames] = useState(false)
-    const [isFavorite, setIsFavorites] = useState(false)
+    const [isFavorite, setIsFavorite] = useState(true)
     const [isPublic, setIsPublic] = useState(true)
     const [isPrivate, setIsPrivate] = useState(false)
 
@@ -42,6 +42,15 @@ const AllListPage = () => {
                         type="radio"
                         checked={isCharacters}
                         onChange={(e) => setIsCharacters(e.target.checked)}
+                        className="mr-2"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-600">Set as Favorite</label>
+                    <input
+                        type="radio"
+                        checked={isFavorite}
+                        onChange={(e) => setIsFavorite(e.target.checked)}
                         className="mr-2"
                     />
                 </div>
