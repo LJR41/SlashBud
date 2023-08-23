@@ -12,13 +12,25 @@ const ListSchema = new mongoose.Schema({
     listObjects: {
         type: [String]
     },
+    isGames:{
+        type: Boolean,
+        default: false,
+    },
+    isCharacters:{
+        type: Boolean,
+        default: false,
+    },
+    isPrivate:{
+        type: Boolean,
+        default: false,
+    },
     isPublic:{
         type: Boolean,
         default: true,
     },
     isFavorite:{
         type: Boolean,
-        default: false
+        default: true
     },
     listOwner:{
         type: Schema.Types.ObjectId,
