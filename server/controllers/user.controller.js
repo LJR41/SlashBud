@@ -220,7 +220,7 @@ module.exports.searchChar = (req, res) => {
 
 module.exports.searchCharImage = (req, res) => {
     const key = process.env.APIKEY
-    const id = req.body.foundChar[0].mug_shot
+    const id = req.body.characterData[0].mug_shot
     console.log(id)
 
     fetch(

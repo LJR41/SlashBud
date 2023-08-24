@@ -11,18 +11,14 @@ const CharacterSearch = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await axios.post(`http://localhost:8000/api/search/character`, { charSearch })
-      .then(response => {
-        setFoundChar(response.data)
-      })
-    if (foundChar) {
-      axios.post(`http://localhost:8000/api/search/image`, { foundChar })
-        .then(response => {
-          setCharMug(response.data[0].url)
-          console.log(charMug)
-        })
-        .catch(err => console.log(err))
-    }
+    const response = await axios.post(`http://localhost:8000/api/search/character`, { charSearch })
+    const characterData = response.data
+    setFoundChar(characterData)
+
+
+    const charResponse = await axios.post(`http://localhost:8000/api/search/image`, { characterData })
+    setCharMug(charResponse.data[0].url)
+    console.log(charMug)
   }
   return (
     <div><div >
@@ -47,15 +43,15 @@ const CharacterSearch = () => {
       </form>
     </div>
       <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
-        {foundChar? 
+        {foundChar ?
 
-        <div>
-          <h1>{foundChar[0].name}</h1>
-          <img src={charMug} alt="" />
-          <button>Add to List</button>
-        </div>
-        
-        : <h1>Loading</h1>}
+          <div>
+            <h1>{foundChar[0].name}</h1>
+            <img src={charMug} alt="" />
+            <button>Add to List</button>
+          </div>
+
+          : <h1>Loading</h1>}
 
       </div>
     </div>
