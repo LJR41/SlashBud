@@ -87,7 +87,7 @@ const APITest = () => {
 
     return (
         <div className="flex-col bg-gradient-to-r from-cyan-600 to-purple-500 ... space ">
-            <div className=" items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="move ...ring-offset-2 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <h5 className=" mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Search For A Game :D</h5>
                 <div>
                     <form onSubmit={handleSubmit}>
@@ -110,15 +110,29 @@ const APITest = () => {
                     </form>
                 </div>
                 <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
-                    <table>
+                    <table class="border-separate border-spacing-2 border border-slate-500 ...">
                         <thead>
-                            <th>
-                                Title
-                            </th>
-                            <th>
-                                Rating
-                            </th>
+                            <tr>
+                                <th class="border border-slate-600 ...">Title</th>
+                                <th class="border border-slate-600 ...">Rating</th>
+                            </tr>
                         </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border border-slate-700 ...">Indiana</td>
+                                <td class="border border-slate-700 ...">Indianapolis</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-slate-700 ...">Ohio</td>
+                                <td class="border border-slate-700 ...">Columbus</td>
+                            </tr>
+                            <tr>
+                                <td class="border border-slate-700 ...">Michigan</td>
+                                <td class="border border-slate-700 ...">Detroit</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table>
                         <tbody className="mb-12 size">
                             {foundGame ?
                                 foundGame.map((eachGame, Idx) => {
