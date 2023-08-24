@@ -10,11 +10,11 @@ const AllListPage = () => {
     const [isPublic, setIsPublic] = useState(true)
     const [isPrivate, setIsPrivate] = useState(false)
 
-    useEffect(() => {
-        axios.get(`http://localhost:8000/api/lists`)
-            .then(response => setListList(response.data))
-            .catch(err => console.log(err))
-    }, [])
+    // useEffect(() => {
+    //     axios.get(`http://localhost:8000/api/lists`)
+    //         .then(response => setListList(response.data))
+    //         .catch(err => console.log(err))
+    // }, [])
 
     const navigate = useNavigate()
 
@@ -103,7 +103,7 @@ const AllListPage = () => {
             </div>
 
             {/* container for Your Lists section */}
-            <div className="container mx-auto p-4">
+            {/* <div className="container mx-auto p-4">
                 <h4 className="text-xl font-bold mb-4">Your Lists</h4>
             </div>
             <table className='table'>
@@ -126,7 +126,7 @@ const AllListPage = () => {
                         )
                     }
                 </tbody>
-            </table>
+            </table> */}
 
         </div>
 

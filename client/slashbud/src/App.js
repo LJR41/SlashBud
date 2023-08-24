@@ -22,10 +22,10 @@ function App() {
         <Route path='/games' element={<GameSearch/>} />
         <Route path='/characters' element={<CharacterSearch/>}/>
       </Routes>
-      <APITest/>
 
     </div>
   );
 }
 
 export default App;
+
