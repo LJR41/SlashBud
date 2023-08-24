@@ -12,14 +12,14 @@ import AllListPage from './Components/AllListPage';
 function App() {
   return (
     <div className="App">
-      <p>First Merge Commit</p>
+      {/* <p>First Merge Commit</p> */}
       <Routes>
         <Route path="/" element={<HomePage />} />        
         <Route path='/register' element={<SignIn />} />
         <Route path='/edit' element={<EditPage />} />
         <Route path='/alllist' element={<AllListPage />} />
       </Routes>
-      <APITest/>
+      {/* <APITest/> */}
     </div>
   );
 }
