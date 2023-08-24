@@ -13,7 +13,6 @@ const ListSchema = new mongoose.Schema({
         nested: {
             title: {type:String},
             imageURL: {type: String}
-
         }
     },
     isGames:{
