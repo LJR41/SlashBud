@@ -10,10 +10,12 @@ import AllListPage from './Components/AllListPage';
 import CharacterSearch from './Components/CharacterSearch';
 
 
+
+
 function App() {
   return (
     <div className="App">
-      <p>First Merge Commit</p>
+      {/* <NavBar /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />        
         <Route path='/register' element={<SignIn />} />

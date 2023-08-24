@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import NavBar from './NavBar'
 
 const AllListPage = () => {
     const [listName, setListName] = useState("")
@@ -35,6 +36,7 @@ const AllListPage = () => {
 
     return (
         <div className="main_container ">
+            <NavBar />
 
             {/* container for Create New List Form */}
             <div className="container border border-black border-2 mx-auto p-4 bg-gradient-to-r from-cyan-600 to-purple-500 ... space">
