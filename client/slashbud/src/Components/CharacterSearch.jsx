@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Await } from 'react-router-dom'
+import NavBar from './NavBar'
 
 const CharacterSearch = () => {
   const [charSearch, setCharSearch] = useState()
@@ -25,6 +26,7 @@ const CharacterSearch = () => {
   }
   return (
     <div><div >
+      <NavBar />
       <form onSubmit={handleSubmit}>
         <button type="submit">Search</button>
         <input type="text" placeholder="Type here..." value={charSearch} onChange={e => { setCharSearch(e.target.value) }} />

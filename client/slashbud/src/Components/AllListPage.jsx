@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
 import Form from './Form'
+import NavBar from './NavBar'
+
 
 const AllListPage = () => {
     const [listList, setListList] = useState([])
@@ -16,6 +18,7 @@ const AllListPage = () => {
 
     return (
         <div className="main_container ">
+            <NavBar />
 
 
             {/* container for Create New List Form */}

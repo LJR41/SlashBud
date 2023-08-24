@@ -12,10 +12,12 @@ import Form from './Components/Form';
 import OneList from './Components/OneList';
 
 
+
+
 function App() {
   return (
     <div className="App">
-      <p>First Merge Commit</p>
+      {/* <NavBar /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />        
         <Route path='/register' element={<SignIn />} />
