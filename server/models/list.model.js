@@ -10,11 +10,8 @@ const ListSchema = new mongoose.Schema({
         maxlength: [15, "Please keep the name less than 15 characters"]
     },
     listObjects: {
-        nested: {
-            title: {type:String},
-            imageURL: {type: String}
-
-        }
+        type: Map,
+        of: String
     },
     isGames:{
         type: Boolean,

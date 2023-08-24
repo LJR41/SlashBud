@@ -193,3 +193,52 @@ module.exports.searchSummary = (req, res) => {
             console.error(err);
         });
 }
+
+module.exports.searchChar = (req, res) => {
+    const key = process.env.APIKEY
+    const name = req.body.charSearch
+
+    fetch(
+        "https://cigkr3iwhd.execute-api.us-west-2.amazonaws.com/production/v4/characters",
+        {
+            method: 'POST',
+            headers: {
+                'x-api-key': `${key}`,
+            },
+            body: `search "${name}"; fields name,mug_shot,games; limit 1;`
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(response => {
+            return res.json(response)
+        })
+        .catch(err => {
+            console.error(err);
+        });
+}
+
+module.exports.searchCharImage = (req, res) => {
+    const key = process.env.APIKEY
+    const id = req.body.foundChar[0].mug_shot
+    console.log(id)
+
+    fetch(
+        "https://cigkr3iwhd.execute-api.us-west-2.amazonaws.com/production/v4/character_mug_shots",
+        {
+            method: 'POST',
+            headers: {
+                'x-api-key': `${key}`,
+            },
+            body: `where id = ${id}; fields url;`
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(response => {
+            return res.json(response)
+        })
+        .catch(err => {
+            console.error(err);
+        });
+}

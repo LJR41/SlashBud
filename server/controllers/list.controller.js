@@ -9,6 +9,7 @@ module.exports.apiTest = (req, res)=>{
 module.exports.newList = (req,res) => {
     const userId = req.params.id
     const newList = new List(req.body)
+    console.log(req.body)
     newList.listOwner = userId
     newList.save()
         .then(list=>{
