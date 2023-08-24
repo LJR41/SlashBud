@@ -12,6 +12,7 @@ const ListSchema = new mongoose.Schema({
     listObjects: {
         type: Map,
         of: String
+
     },
     isGames:{
         type: Boolean,
