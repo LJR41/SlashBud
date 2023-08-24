@@ -23,8 +23,13 @@ const routes = (app) =>{
     app.post('/api/search/game', UserController.searchGames)
     app.post('/api/search/summary', UserController.searchSummary)
 
+    //Char Search routes
+    app.post('/api/search/character', UserController.searchChar)
+    app.post('/api/search/image', UserController.searchCharImage)
+
     // List Routes
-    app.get('/api/lists', ListController.apiTest )
+    app.get('/api/lists', ListController.allLists )
+    app.post('/api/lists', ListController.addList )
     app.post('/api/lists/:id', ListController.newList)
     app.get('/api/lists/:id', ListController.oneList)
     app.delete('/api/list/:id',ListController.deleteList)

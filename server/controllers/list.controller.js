@@ -9,6 +9,7 @@ module.exports.apiTest = (req, res)=>{
 module.exports.newList = (req,res) => {
     const userId = req.params.id
     const newList = new List(req.body)
+    console.log(req.body)
     newList.listOwner = userId
     newList.save()
         .then(list=>{
@@ -21,6 +22,18 @@ module.exports.newList = (req,res) => {
                 })
         })
         .catch(err => res.status(400).json(err))
+}
+
+module.exports.allLists = (req, res) => {
+    List.find()
+    .then(listList => res.json (listList))
+    .catch(err =>res.status(400).json(err))
+}
+
+module.exports.addList = (req, res) => {
+    List.create(req.body)
+    .then(newList => res.json (newList))
+    .catch(err => res.status(400).json(err))
 }
 
 module.exports.oneList = (req, res) => {
