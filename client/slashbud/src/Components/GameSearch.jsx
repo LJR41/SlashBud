@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import NavBar from './NavBar'
 
 const GameSearch = () => {
     const [allGames, setAllGames] = useState()
@@ -85,7 +86,9 @@ const GameSearch = () => {
 
 
     return (
+   
         <div className="flex-col bg-gradient-to-r from-cyan-600 to-purple-500 ... space ">
+          <NavBar />
             <div className="move ...ring-offset-2 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <h5 className=" m-b-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Search For A Game :D</h5>
                 <div>
@@ -128,27 +131,8 @@ const GameSearch = () => {
                                 })
                                 : <tr></tr>}</tbody>
                     </table>
-                </div>
-            </div>
-
-            <table>
-                <tbody className="mb-12 size">
-                    {foundGame ?
-                        foundGame.map((eachGame, Idx) => {
-                            return (
-                                <tr>
-                                    <td>
-                                        {eachGame.name}
-                                    </td>
-                                    <td>
-                                        {eachGame.rating ? Math.round(eachGame.rating) : "N/A"
-                                        }
-                                    </td>
-                                </tr>
-                            )
-                        })
-                        : <tr></tr>}</tbody>
-            </table>
+                </div> 
+          </div>
             <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <table >
                     <thead>
