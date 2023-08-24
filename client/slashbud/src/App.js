@@ -8,6 +8,8 @@ import SignIn from './Components/SignIn';
 import EditPage from './Components/EditPage';
 import AllListPage from './Components/AllListPage';
 import CharacterSearch from './Components/CharacterSearch';
+import Form from './Components/Form';
+import OneList from './Components/OneList';
 
 
 
@@ -21,6 +23,8 @@ function App() {
         <Route path='/register' element={<SignIn />} />
         <Route path='/edit' element={<EditPage />} />
         <Route path='/alllist' element={<AllListPage />} />
+        <Route path='/form' element={<Form />} />
+        <Route path='/onelist/:id' element={< OneList/>} />
         <Route path='/games' element={<GameSearch/>} />
         <Route path='/characters' element={<CharacterSearch/>}/>
       </Routes>
