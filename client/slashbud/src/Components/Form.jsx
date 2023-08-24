@@ -31,7 +31,7 @@ export const Form = () => {
         <div className="main_container ">
 
             {/* container for Create New List Form */}
-            <div className="container border border-black border-2 mx-auto p-4 bg-gradient-to-r from-cyan-600 to-purple-500 ... space">
+            <div className="bg-gradient-to-r from-cyan-600 to-purple-500 ... space p-4">
                 <h4 className="text-xl font-bold mb-4">Create a New List</h4>
                 <form onSubmit={handleSubmit} className="max-w-md mx-auto">
                     <div>
