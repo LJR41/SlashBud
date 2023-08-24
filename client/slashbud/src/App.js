@@ -13,7 +13,7 @@ import CharacterSearch from './Components/CharacterSearch';
 function App() {
   return (
     <div className="App">
-      {/* <p>First Merge Commit</p> */}
+      <p>First Merge Commit</p>
       <Routes>
         <Route path="/" element={<HomePage />} />        
         <Route path='/register' element={<SignIn />} />
@@ -22,6 +22,8 @@ function App() {
         <Route path='/games' element={<GameSearch/>} />
         <Route path='/characters' element={<CharacterSearch/>}/>
       </Routes>
+      <APITest/>
+
     </div>
   );
 }

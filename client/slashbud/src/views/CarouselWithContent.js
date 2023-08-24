@@ -79,7 +79,7 @@ export function CarouselWithContent() {
                             }
                         </Carousel>
                         <div className="flex justify-center gap-2 mb-8">
-                            <Button size="lg" color="white" >
+                            <Button  size="lg" color="white"  >
                                 View Selected
                             </Button>
                             <Button size="lg" color="white" variant="text">
