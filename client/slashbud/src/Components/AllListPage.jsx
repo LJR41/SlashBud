@@ -32,7 +32,7 @@ const AllListPage = () => {
 
             {/* container for Create New List Form */}
             <div>
-                <Form refreshPage = {refreshPage}/>
+                <Form refreshPage={refreshPage} />
             </div>
 
             {/* container for Your Lists section */}
@@ -40,51 +40,45 @@ const AllListPage = () => {
                 <h4 className="text-xl font-bold mb-4">Your Lists</h4>
             </div>
 
-            <table className='table'>
+            <table className='table w-full border-collapse border'>
                 <thead>
                     <tr>
-                        <th>List Name</th>
-                        <th>Type</th>
-                        <th>Display</th>
+                        <th className="p-3 text-center bg-gray-200">List Name</th>
+                        <th className="p-3 text-center bg-gray-200">Type</th>
+                        <th className="p-3 text-center bg-gray-200">Display</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        listId ?
-                            <div>
-                                {listId.map((eachList) => (
-                                    <tr key={eachList._id} className='hover'>
-                                        <td>
-                                            <Link to={`/onelist/${listId._id}`} className='link'>
-                                                {eachList.listName}
-                                            </Link>
-                                        </td>
-                                        <td>
-                                            {eachList.isCharacters ? (
-                                                <p>Characters</p>
-                                            ) : eachList.isGames ? (
-                                                <p>Games</p>
-                                            ) : (
-                                                <p>N/A</p>
-                                            )}
-                                        </td>
-                                        <td>
-                                            {eachList.isPublic ? (
-                                                <p>Public</p>
-                                            ) : (
-                                                <p>Private</p>
-                                            )}
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                ))}
-                            </div>
-                            : <p></p>
-                    }
-
+                    {listId ? (
+                        listId.map((eachList) => (
+                            <tr key={eachList._id} className='hover'>
+                                <td className="p-3 border">{eachList.listName}</td>
+                                <td className="p-3 border">
+                                    {eachList.isCharacters ? (
+                                        <span>Characters</span>
+                                    ) : eachList.isGames ? (
+                                        <span>Games</span>
+                                    ) : (
+                                        <span>N/A</span>
+                                    )}
+                                </td>
+                                <td className="p-3 border">
+                                    {eachList.isPublic ? (
+                                        <span>Public</span>
+                                    ) : (
+                                        <span>Private</span>
+                                    )}
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="5" className="p-3 border">No lists found</td>
+                        </tr>
+                    )}
                 </tbody>
             </table>
+
         </div>
     )
 }
