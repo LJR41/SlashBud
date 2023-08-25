@@ -74,8 +74,8 @@ export function CarouselWithContent(props) {
                                                     </Typography>
                                                 </div>
                                                 <div className="flex justify-center gap-2 mb-8">
-                                                    <Button size="lg" color="white" onClick={redirectShop(eachGame.steamAppID)}  >
-                                                        View Selected {eachGame.steamAppID}
+                                                    <Button size="lg" color="white" onClick={()=>{redirectShop(eachGame.steamAppID)}} >
+                                                        Shop This Game
                                                     </Button>
                                                 </div>
                                             </div>
