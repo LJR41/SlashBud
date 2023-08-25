@@ -25,6 +25,9 @@ const AllListPage = () => {
     }
 
 
+    //since we do not have user logged in/params set up use this:
+    //http://localhost:3000/alllist/64e51899ba60ceb812b11c30
+
 
     return (
         <div className="main_container">
@@ -46,13 +49,14 @@ const AllListPage = () => {
                         <th className="p-3 text-center bg-gray-200">List Name</th>
                         <th className="p-3 text-center bg-gray-200">Type</th>
                         <th className="p-3 text-center bg-gray-200">Display</th>
+                        <th className="p-3 text-center bg-gray-200">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {listId ? (
                         listId.map((eachList) => (
                             <tr key={eachList._id} className='hover'>
-                                <td className="p-3 border">{eachList.listName}</td>
+                                <td className="p-3 border"><Link to={`/onelist/${eachList._id}`} className='link'>{eachList.listName}</Link></td>
                                 <td className="p-3 border">
                                     {eachList.isCharacters ? (
                                         <span>Characters</span>
