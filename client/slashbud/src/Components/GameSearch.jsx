@@ -11,6 +11,8 @@ const GameSearch = () => {
     const [foundGame, setFoundGame] = useState()
     const [allLists, setAllLists] = useState()
     const [userData, setUserData] = useState()
+    const [saleSearch, setSaleSearch] = useState()
+    const [foundSale, setFoundSale] = useState()
     // const [bigData, setBigData] = useState({
     //     gameName:[""],
     //     gameRating: [0],
@@ -93,17 +95,17 @@ const GameSearch = () => {
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSales = (e) => {
         e.preventDefault()
-        axios.post(`http://localhost:8000/api/search/game`, { gameSearch })
+        axios.get(`https://www.cheapshark.com/api/1.0/deals?storeID=1&title=${saleSearch}`)
             .then(response => {
                 console.log(response.data)
-                setFoundGame(response.data)
+                setFoundSale(response.data)
             })
             .catch(err => console.log(err))
     }
 
-    const addToList = (req) =>{
+    const addToList = (req) => {
         console.log(userData, req)
         // axios.patch(`http://localhost:8000/api/list/${userData}`,{})
         // .then(response => {
@@ -116,11 +118,12 @@ const GameSearch = () => {
 
         <div className="flex-col bg-gradient-to-r from-cyan-600 to-purple-500 ... space ">
             <NavBar />
+            {/* Search sales */}
             <div className="move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <h5 className=" m-b-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Search For A Game :D</h5>
                 <div>
-                    <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder=" Type here..." className='rounded-lg text-center ring-offset-3 ring-2' value={gameSearch} onChange={e => { setGameSearch(e.target.value) }} />
+                    <form onSubmit={handleSales}>
+                        <input type="text" placeholder=" Type here..." className='rounded-lg text-center ring-offset-3 ring-2' value={saleSearch} onChange={e => { setSaleSearch(e.target.value) }} />
                         <select name="genre " id="genre" className='rounded-lg m-1'>
                             <option hidden>Genre</option>
                             <option value="FPS">FPS</option>
@@ -144,23 +147,29 @@ const GameSearch = () => {
                             <tr>
                                 <th class="border border-slate-600 ...">Title</th>
                                 <th class="border border-slate-600 ...">Rating</th>
+                                <th class="border border-slate-600 ...">On Sale</th>
+                                <th class="border border-slate-600 ...">Sale Price</th>
+                                <th class="border border-slate-600 ...">Normal Price</th>
                                 <th class="border border-slate-600 ...">Actions</th>
                             </tr>
                         </thead>
                         <tbody className="mb-12 size">
-                            {foundGame ?
-                                foundGame.map((eachGame, Idx) => {
+                            {foundSale ?
+                                foundSale.map((eachSale, Idx) => {
                                     return (
                                         <tr>
-                                            <td class="border border-slate-700 ..."> {eachGame.name}</td>
-                                            <td class="border border-slate-700 ..." >{eachGame.rating ? Math.round(eachGame.rating) : "N/A"}</td>
+                                            <td class="border border-slate-700 ..."> {eachSale.title}</td>
+                                            <td class="border border-slate-700 ..."> {eachSale.steamRatingPercent}</td>
+                                            <td class="border border-slate-700 ..." >{(eachSale.isOnSale == 1) ? "Yes": "No"}</td>
+                                            <td class="border border-slate-700 ..." >{eachSale.salePrice}</td>
+                                            <td class="border border-slate-700 ..." >{eachSale.normalPrice}</td>
                                             <td class="border border-slate-700 ..." >
                                                 <select name="lists" id="">
                                                     <option hidden value="">Add to List</option>
                                                     {
                                                         allLists.map((eachList, idx) => {
                                                             return (
-                                                                <option value="" onClick={()=>{addToList()}}>{eachList.listName}</option>
+                                                                <option value="" onClick={() => { addToList() }}>{eachList.listName}</option>
                                                             )
                                                         })
                                                     }
@@ -174,7 +183,6 @@ const GameSearch = () => {
                     </table>
                 </div>
             </div>
-
             {/* Botttom Chart */}
             <div class="relative overflow-x-auto shadow-md sm:rounded-sm" style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
                 <table class="text-sm text-left text-gray-500 dark:text-gray-400 mb-10 ...ring-offset-4 ring-4">
