@@ -3,10 +3,25 @@ import axios from 'axios'
 import { Await } from 'react-router-dom'
 import NavBar from './NavBar'
 
+
 const CharacterSearch = () => {
   const [charSearch, setCharSearch] = useState()
   const [foundChar, setFoundChar] = useState()
   const [charMug, setCharMug] = useState()
+  const [userData, setUserData] = useState()
+  const [allLists, setAllLists] = useState()
+
+  useEffect(() => {
+    const getUser = async () => {
+      const res = await axios.get("http://localhost:8000/api/users/loggedin", { withCredentials: true })
+      const response = await axios.get(`http://localhost:8000/api/lists/${res.data.user._id}`)
+      setUserData(res.data.user._id)
+      setAllLists(response.data.lists)
+
+    }
+
+    getUser()
+  }, [])
 
 
   const handleSubmit = async (e) => {
@@ -19,6 +34,13 @@ const CharacterSearch = () => {
     const charResponse = await axios.post(`http://localhost:8000/api/search/image`, { characterData })
     setCharMug(charResponse.data[0].url)
     console.log(charMug)
+
+
+  }
+  const addToList = (id) => {
+    axios.patch(`http://localhost:8000/api/list/${id}`, { title: foundChar[0].name, imageURL: charMug })
+      .then(response => console.log(response))
+      .catch(err => console.log(err))
   }
   return (
     <div>
@@ -46,14 +68,23 @@ const CharacterSearch = () => {
       <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
         {foundChar ?
 
-              <div>
-                <h1 className="mb-3 t">{foundChar[0].name}</h1>
-                <img className="big" src={charMug} alt="" />
-                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-.5 px-2 rounded-full m-1">Add to List</button>
-              </div>
-              : <h1>Loading</h1>}
+          <div>
+            <h1 className="mb-3 t">{foundChar[0].name}</h1>
+            <img className="big" src={charMug} alt="" />
+            <select name="lists" id="">
+              <option hidden value="">Add to List</option>
+              {
+                allLists.map((eachList, idx) => {
+                  return (
+                    <option value="" onClick={() => { addToList(eachList._id) }}>{eachList.listName}</option>
+                  )
+                })
+              }
+            </select>
           </div>
-        </div>    
+          : <h1>Loading</h1>}
+      </div>
+    </div>
 
   )
 }

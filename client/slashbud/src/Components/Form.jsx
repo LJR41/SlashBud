@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export const Form = (props) => {
-    const { id } = useParams(); // Get the User ID from the URL
+    const [id, setId] = useState()
     const [listName, setListName] = useState('');
     const [isCharacters, setIsCharacters] = useState(false);
     const [isGames, setIsGames] = useState(false);
@@ -12,7 +12,13 @@ export const Form = (props) => {
     const [isPrivate, setIsPrivate] = useState(false);
 
     const navigate = useNavigate();
-
+    useEffect(() => {
+        const getUser = async () => {
+            const res = await axios.get("http://localhost:8000/api/users/loggedin", { withCredentials: true })
+            setId(res.data.user._id)
+        }
+        getUser()
+    }, [])
     const handleSubmit = (e) => {
         console.log("form submitted")
         e.preventDefault();

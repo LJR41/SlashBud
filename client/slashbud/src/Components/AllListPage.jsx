@@ -10,20 +10,19 @@ const AllListPage = () => {
     // const { id } = useParams()
     const [toggleRefresh, setToggleRefresh] = useState(false)
     const [childId, setChildId] = useState("")
-    
+
     useEffect(() => {
-        const getUser = async()=>{
+        const getUser = async () => {
             const res = await axios.get("http://localhost:8000/api/users/loggedin", { withCredentials: true })
-            const userData = res.data.user
-            const userId = await userData._id
-            const id = {userId}
-            setChildId(id)
-        const response = await axios.get(`http://localhost:8000/api/lists/${childId.userId}`)
-        const ListList = response.data
-        const ListId = response.data.lists
-        setListList(ListList)
-        setListId(ListId)
+            const response = await axios.get(`http://localhost:8000/api/lists/${res.data.user._id}`)
+            const ListList = response.data
+            const ListId = response.data.lists
+            setListList(ListList)
+            setListId(ListId)
         }
+
+
+
         getUser()
     }, [toggleRefresh])
 
@@ -82,8 +81,8 @@ const AllListPage = () => {
                                     )}
                                 </td>
                                 <td className="p-3 border">
-                                <Link to={`/onelist/${eachList._id}`} className='link'> View List </Link> |
-                                <Link to={`/edit/${eachList._id}`} className='link'> Edit List </Link>
+                                    <Link to={`/onelist/${eachList._id}`} className='link'> View List </Link> |
+                                    <Link to={`/edit/${eachList._id}`} className='link'> Edit List </Link>
                                 </td>
                             </tr>
                         ))

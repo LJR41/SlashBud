@@ -9,6 +9,13 @@ const GameSearch = () => {
     const [allPlatforms, setAllPlatforms] = useState()
     const [gameSearch, setGameSearch] = useState()
     const [foundGame, setFoundGame] = useState()
+    const [allLists, setAllLists] = useState()
+    const [userData, setUserData] = useState()
+    // const [bigData, setBigData] = useState({
+    //     gameName:[""],
+    //     gameRating: [0],
+    //     gameImage: [""]
+    // })
 
     useEffect(() => {
         axios.post(`http://localhost:8000/api/games`)
@@ -41,6 +48,18 @@ const GameSearch = () => {
                 setAllPlatforms(platformsObject)
             })
             .catch(err => console.log(JSON.stringify(err)))
+        const getUser = async () => {
+            const res = await axios.get("http://localhost:8000/api/users/loggedin", { withCredentials: true })
+            const response = await axios.get(`http://localhost:8000/api/lists/${res.data.user._id}`)
+            setUserData(response.data._id)
+            setAllLists(response.data.lists)
+            // console.log(userData)
+            // console.log(allLists)
+        }
+
+
+
+        getUser()
     }, [])
 
     const formatGenre = (gameObject) => {
@@ -84,6 +103,14 @@ const GameSearch = () => {
             .catch(err => console.log(err))
     }
 
+    const addToList = (req) =>{
+        console.log(userData, req)
+        // axios.patch(`http://localhost:8000/api/list/${userData}`,{})
+        // .then(response => {
+        //     console.log(response)
+        // })
+        // .catch(err => console.log(err))
+    }
 
     return (
 
@@ -117,6 +144,7 @@ const GameSearch = () => {
                             <tr>
                                 <th class="border border-slate-600 ...">Title</th>
                                 <th class="border border-slate-600 ...">Rating</th>
+                                <th class="border border-slate-600 ...">Actions</th>
                             </tr>
                         </thead>
                         <tbody className="mb-12 size">
@@ -126,6 +154,19 @@ const GameSearch = () => {
                                         <tr>
                                             <td class="border border-slate-700 ..."> {eachGame.name}</td>
                                             <td class="border border-slate-700 ..." >{eachGame.rating ? Math.round(eachGame.rating) : "N/A"}</td>
+                                            <td class="border border-slate-700 ..." >
+                                                <select name="lists" id="">
+                                                    <option hidden value="">Add to List</option>
+                                                    {
+                                                        allLists.map((eachList, idx) => {
+                                                            return (
+                                                                <option value="" onClick={()=>{addToList()}}>{eachList.listName}</option>
+                                                            )
+                                                        })
+                                                    }
+                                                </select>
+                                            </td>
+
                                         </tr>
                                     )
                                 })
