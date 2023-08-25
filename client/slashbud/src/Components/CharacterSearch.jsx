@@ -45,7 +45,7 @@ const CharacterSearch = () => {
   return (
     <div>
       <NavBar />
-    <div className="flex-col bg-gradient-to-r from-cyan-600 to-purple-500 ... space ">
+    <div className="flex-col bg-gradient-to-r from-cyan-600 to-purple-500 ... space  tall">
       <div className="move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <h5 className=" m-b-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Search For A Character </h5>
         <form onSubmit={handleSubmit}>
