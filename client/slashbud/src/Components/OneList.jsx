@@ -5,22 +5,26 @@ import {useParams} from "react-router-dom"
 const OneList = () => {
     const {id} = useParams()
     const [oneList, setOneList] = useState([])
+    const [listItems, setListItems] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/lists/${id}`)
-        .then(response => setOneList(response.data))
+        axios.get(`http://localhost:8000/api/lists/one/${id}`)
+        .then(response => {
+            setOneList(response.data)
+            setListItems(response.data.listObjects)})
         .catch(err => console.log(err))
     }, [])
     
+
+    // http://localhost:3000/onelist/64e81fae66671b2cc5de73f8
+
     return (
         <div>
-            <h2>{oneList.lists[0].listName}</h2>
-            {oneList
-                .sort((a,b) => a.lists[0].listObjects.localeCompare(b.name))
-                .map((eachItem, indx) =>{
+            <h2>{oneList.listName}</h2>
+            {listItems.map((eachItem, indx) =>{
                 return(
                     <ol>
-                        <li>{oneList.lists[0].listObjects}</li>
+                        <li>{eachItem.title}</li>
                     </ol>
                 )
             })}
