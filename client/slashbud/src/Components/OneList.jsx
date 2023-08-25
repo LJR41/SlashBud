@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import {useParams} from "react-router-dom"
+import NavBar from './NavBar'
 
 const OneList = () => {
     const {id} = useParams()
@@ -19,15 +20,18 @@ const OneList = () => {
     // http://localhost:3000/onelist/64e81fae66671b2cc5de73f8
 
     return (
-        <div>
-            <h2>{oneList.listName}</h2>
-            {listItems.map((eachItem, indx) =>{
-                return(
-                    <ol>
-                        <li>{eachItem.title}</li>
-                    </ol>
-                )
-            })}
+        <div className="flex-col bg-gradient-to-r from-cyan-600 to-purple-500 ... space ">
+            <NavBar />
+            <div className="move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700e">
+                <h2 className="move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700e">{oneList.listName}</h2>
+                {listItems.map((eachItem, indx) =>{
+                    return(
+                        <ol>
+                            <li>{eachItem.title}</li>
+                        </ol>
+                    )
+                })}
+            </div>
 
             {/* <div>
                 <h3>{oneList.lists[0].listObjects[0]}</h3>
