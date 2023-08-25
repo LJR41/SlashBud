@@ -4,10 +4,15 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
 
-export function CarouselWithContent() {
+export function CarouselWithContent(props) {
     const [games, setGames] = useState([])
     const [oneGame, setOneGame] = useState()
     const [summaries, setSummaries] = useState([])
+    
+
+    const redirectShop = (id) => {
+        window.open(`http://store.steampowered.com/app/${id}/`)
+    }
 
     useEffect(() => {
         apiCall()
@@ -15,15 +20,11 @@ export function CarouselWithContent() {
 
     const apiCall = async () => {
         const resp = await axios.get(`https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15&pageSize=5`)
-        console.log(resp.data)
         setGames(resp.data)
-        console.log(games)
         setOneGame(resp.data[0].title)
         const gamesList = resp.data
-        console.log(gamesList)
         let summaryList = []
         for (const game of gamesList) {
-            console.log(game)
             const gameData = await axios.post('http://localhost:8000/api/search/summary', { oneGame: game.title })
             summaryList.push(gameData.data[0].summary)
         }
@@ -72,20 +73,18 @@ export function CarouselWithContent() {
                                                         <p>{summaries[index]}</p>
                                                     </Typography>
                                                 </div>
+                                                <div className="flex justify-center gap-2 mb-8">
+                                                    <Button size="lg" color="white" onClick={redirectShop(eachGame.steamAppID)}  >
+                                                        View Selected {eachGame.steamAppID}
+                                                    </Button>
+                                                </div>
                                             </div>
                                         </div>
                                     )
                                 })
                             }
                         </Carousel>
-                        <div className="flex justify-center gap-2 mb-8">
-                            <Button  size="lg" color="white"  >
-                                View Selected
-                            </Button>
-                            <Button size="lg" color="white" variant="text">
-                                View All Games
-                            </Button>
-                        </div>
+                        
                     </div> :
                     <p>Loading...</p>
             }

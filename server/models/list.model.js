@@ -9,11 +9,12 @@ const ListSchema = new mongoose.Schema({
         required: [true, "Please give this list a name"],
         maxlength: [15, "Please keep the name less than 15 characters"]
     },
-    listObjects: {
-        type: Map,
-        of: String
-
-    },
+    listObjects: [
+        {
+        title: String,
+        imageURL: String,
+    }
+    ],
     isGames:{
         type: Boolean,
         default: false,
