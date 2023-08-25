@@ -46,16 +46,15 @@ const CharacterSearch = () => {
       <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
         {foundChar ?
 
-          <div>
-            <h1>{foundChar[0].name}</h1>
-            <img src={charMug} alt="" />
-            <button>Add to List</button>
+              <div>
+                <h1 className="mb-3 t">{foundChar[0].name}</h1>
+                <img className="big" src={charMug} alt="" />
+                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-.5 px-2 rounded-full m-1">Add to List</button>
+              </div>
+              : <h1>Loading</h1>}
           </div>
+        </div>    
 
-          : <h1>Loading</h1>}
-
-      </div>
-    </div>
   )
 }
 

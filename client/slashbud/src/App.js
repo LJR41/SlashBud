@@ -10,6 +10,7 @@ import AllListPage from './Components/AllListPage';
 import CharacterSearch from './Components/CharacterSearch';
 import Form from './Components/Form';
 import OneList from './Components/OneList';
+import Profile from './Components/Profile';
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route path='/onelist/:id' element={< OneList/>} />
         <Route path='/games' element={<GameSearch/>} />
         <Route path='/characters' element={<CharacterSearch/>}/>
+        <Route path='/profile/:id' element={<Profile />} />
       </Routes>
 
     </div>
