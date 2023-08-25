@@ -23,7 +23,7 @@ const OneList = () => {
         <div className="flex-col bg-gradient-to-r from-cyan-600 to-purple-500 ... space ">
             <NavBar />
             <div className="move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700e">
-                <h2 className="move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700e">{oneList.listName}</h2>
+                <h2 className="flex items-center justify-center ... bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700e">{oneList.listName}</h2>
                 {listItems.map((eachItem, indx) =>{
                     return(
                         <ol>
