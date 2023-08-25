@@ -11,20 +11,17 @@ const CharacterSearch = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await axios.post(`http://localhost:8000/api/search/character`, { charSearch })
-      .then(response => {
-        setFoundChar(response.data)
-      })
-    if (foundChar) {
-      axios.post(`http://localhost:8000/api/search/image`, { foundChar })
-        .then(response => {
-          setCharMug(response.data[0].url)
-          console.log(charMug)
-        })
-        .catch(err => console.log(err))
-    }
+    const response = await axios.post(`http://localhost:8000/api/search/character`, { charSearch })
+    const characterData = response.data
+    setFoundChar(characterData)
+
+
+    const charResponse = await axios.post(`http://localhost:8000/api/search/image`, { characterData })
+    setCharMug(charResponse.data[0].url)
+    console.log(charMug)
   }
   return (
+
     <div><div>
       <NavBar/>
       <div className="flex-col bg-gradient-to-r from-cyan-600 to-purple-500 ... space ">
@@ -57,7 +54,7 @@ const CharacterSearch = () => {
               </div>
               : <h1>Loading</h1>}
           </div>
-        </div>
+        </div>    
       </div>
     </div>
     </div>
