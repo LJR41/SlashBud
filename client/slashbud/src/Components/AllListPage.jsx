@@ -8,6 +8,7 @@ const AllListPage = () => {
     const [listList, setListList] = useState([])
     const [listId, setListId] = useState([])
     const { id } = useParams()
+    const [toggleRefresh, setToggleRefresh] = useState(false)
 
     useEffect(() => {
         // Fetch the user's lists based on their ID
@@ -17,7 +18,13 @@ const AllListPage = () => {
                 setListId(response.data.lists)
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [toggleRefresh])
+
+    const refreshPage = () => {
+        setToggleRefresh(!toggleRefresh)
+    }
+
+
 
     return (
         <div className="main_container">
@@ -25,7 +32,7 @@ const AllListPage = () => {
 
             {/* container for Create New List Form */}
             <div>
-                <Form></Form>
+                <Form refreshPage = {refreshPage}/>
             </div>
 
             {/* container for Your Lists section */}
@@ -52,6 +59,24 @@ const AllListPage = () => {
                                                 {eachList.listName}
                                             </Link>
                                         </td>
+                                        <td>
+                                            {eachList.isCharacters ? (
+                                                <p>Characters</p>
+                                            ) : eachList.isGames ? (
+                                                <p>Games</p>
+                                            ) : (
+                                                <p>N/A</p>
+                                            )}
+                                        </td>
+                                        <td>
+                                            {eachList.isPublic ? (
+                                                <p>Public</p>
+                                            ) : (
+                                                <p>Private</p>
+                                            )}
+                                        </td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                 ))}
                             </div>

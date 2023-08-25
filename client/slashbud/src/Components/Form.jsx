@@ -1,28 +1,36 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
 
-export const Form = () => {
-    const [listName, setListName] = useState("")
-    const [isCharacters, setIsCharacters] = useState(false)
-    const [isGames, setIsGames] = useState(false)
-    const [isFavorite, setIsFavorite] = useState(true)
-    const [isPublic, setIsPublic] = useState(true)
-    const [isPrivate, setIsPrivate] = useState(false)
+export const Form = (props) => {
+    const { id } = useParams(); // Get the User ID from the URL
+    const [listName, setListName] = useState('');
+    const [isCharacters, setIsCharacters] = useState(false);
+    const [isGames, setIsGames] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(true);
+    const [isPublic, setIsPublic] = useState(true);
+    const [isPrivate, setIsPrivate] = useState(false);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        axios.post(`http://localhost:8000/api/lists`,
-            {listName, isCharacters, isGames, isFavorite, isPublic, isPrivate })
-
-            .then(response => {
-                console.log(listName, isCharacters, isGames, isFavorite, isPublic, isPrivate)
-                navigate('/alllist')
+        console.log("form submitted")
+        e.preventDefault();
+        axios
+            .post(`http://localhost:8000/api/lists/${id}`, {
+                userId: id,
+                listName,
+                isCharacters,
+                isGames,
+                isFavorite,
+                isPublic,
+                isPrivate,
             })
-            .catch(err => console.log(err))
-    }
+            .then((response) => {
+                props.refreshPage();
+            })
+            .catch((err) => console.log(err));
+    };
 
 
 

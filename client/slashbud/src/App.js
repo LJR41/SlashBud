@@ -24,7 +24,6 @@ function App() {
         <Route path='/register' element={<SignIn />} />
         <Route path='/edit' element={<EditPage />} />
         <Route path='/alllist/:id' element={<AllListPage />} />
-        <Route path='/form/:id' element={<Form />} />
         <Route path='/onelist/:id' element={< OneList/>} />
         <Route path='/games' element={<GameSearch/>} />
         <Route path='/characters' element={<CharacterSearch/>}/>
