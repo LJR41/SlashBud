@@ -41,3 +41,10 @@ module.exports.deleteList = (req, res)=>{
     .then(status => res.json(status))
     .catch(err => res.status(400).json(err))
 }
+
+module.exports.addToList = (req,res) => {
+    console.log(req.body)
+    List.findOneAndUpdate({_id:req.params.id},{ $push : req.body })
+    .then(updatedList => res.json(updatedList))
+    .catch(err => res.status(400).json(err))
+}

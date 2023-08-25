@@ -32,6 +32,7 @@ const routes = (app) =>{
     app.post('/api/lists/:id', ListController.newList)
     app.get('/api/lists/one/:id', ListController.oneList)
     app.delete('/api/list/:id',ListController.deleteList)
+    app.patch('/api/list/:id', ListController.addToList)
 }
 // 3. include all the routes with the corresponding logic from controller
 module.exports = routes
