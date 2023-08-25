@@ -28,6 +28,8 @@ There is always more work to be done, edges of CSS to sharpen, bugs to stamp out
 * REACT
 * Node.js
 * Tailwind
+* AWS
+* JWT
 
 
 ## The Builders
