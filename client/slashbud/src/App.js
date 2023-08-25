@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />        
         <Route path='/register' element={<SignIn />} />
-        <Route path='/edit' element={<EditPage />} />
+        <Route path='/edit/:id' element={<EditPage />} />
         <Route path='/alllist' element={<AllListPage />} />
         <Route path='/onelist/:id' element={< OneList/>} />
         <Route path='/games' element={<GameSearch/>} />

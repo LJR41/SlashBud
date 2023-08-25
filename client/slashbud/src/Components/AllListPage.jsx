@@ -32,13 +32,14 @@ const AllListPage = () => {
     }
 
 
+
     //since we do not have user logged in/params set up use this:
     //http://localhost:3000/alllist/64e51899ba60ceb812b11c30
 
 
     return (
-        <div className="main_container">
-            <NavBar ></NavBar>
+        <div className="main_container bg-gradient-to-r from-cyan-600 to-purple-500 ... space p-4">
+            <NavBar />
 
             {/* container for Create New List Form */}
             <div>
@@ -46,11 +47,11 @@ const AllListPage = () => {
             </div>
 
             {/* container for Your Lists section */}
-            <div className="container mx-auto p-4">
+            <div className="move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700e">
                 <h4 className="text-xl font-bold mb-4">Your Lists</h4>
             </div>
 
-            <table className='table w-full border-collapse border'>
+            <table className='move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700e'>
                 <thead>
                     <tr>
                         <th className="p-3 text-center bg-gray-200">List Name</th>
@@ -63,7 +64,7 @@ const AllListPage = () => {
                     {listId ? (
                         listId.map((eachList) => (
                             <tr key={eachList._id} className='hover'>
-                                <td className="p-3 border"><Link to={`/onelist/${eachList._id}`} className='link'>{eachList.listName}</Link></td>
+                                <td className="p-3 border">{eachList.listName}</td>
                                 <td className="p-3 border">
                                     {eachList.isCharacters ? (
                                         <span>Characters</span>
@@ -79,6 +80,10 @@ const AllListPage = () => {
                                     ) : (
                                         <span>Private</span>
                                     )}
+                                </td>
+                                <td className="p-3 border">
+                                <Link to={`/onelist/${eachList._id}`} className='link'> View List </Link> |
+                                <Link to={`/edit/${eachList._id}`} className='link'> Edit List </Link>
                                 </td>
                             </tr>
                         ))
