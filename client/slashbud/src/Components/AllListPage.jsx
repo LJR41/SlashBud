@@ -37,7 +37,7 @@ const AllListPage = () => {
 
 
     return (
-        <div className="main_container bg-gradient-to-r from-cyan-600 to-purple-500 ... space p-4">
+        <div className="main_container bg-gradient-to-r from-cyan-600 to-purple-500 ... space p-4  tall">
             <NavBar />
 
             {/* container for Create New List Form */}
@@ -50,7 +50,7 @@ const AllListPage = () => {
                 <h4 className="text-xl font-bold mb-4">Your Lists</h4>
             </div>
 
-            <table className='move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700e'>
+            <table className='right move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700e'>
                 <thead>
                     <tr>
                         <th className="p-3 text-center bg-gray-200">List Name</th>
@@ -62,7 +62,7 @@ const AllListPage = () => {
                 <tbody>
                     {listId ? (
                         listId.map((eachList) => (
-                            <tr key={eachList._id} className='hover'>
+                            <tr key={eachList._id} className='hover '>
                                 <td className="p-3 border">{eachList.listName}</td>
                                 <td className="p-3 border">
                                     {eachList.isCharacters ? (

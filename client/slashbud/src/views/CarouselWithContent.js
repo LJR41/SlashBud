@@ -8,7 +8,7 @@ export function CarouselWithContent(props) {
     const [games, setGames] = useState([])
     const [oneGame, setOneGame] = useState()
     const [summaries, setSummaries] = useState([])
-    
+
 
     const redirectShop = (id) => {
         window.open(`http://store.steampowered.com/app/${id}/`)
@@ -32,17 +32,17 @@ export function CarouselWithContent(props) {
     }
 
     return (
-        <div>
-            <div className="m-4">
-            <Typography variant="h1" color="lime" className="mb-4 text-3xl md:text-4xl lg:text-4xl">
-                Games On Sale Today $15 Or Less
-            </Typography>
+        <div className="top">
+            <div className="m-8">
+                <Typography variant="h1" color="lime" className="mb-4 text-3xl md:text-4xl lg:text-4xl">
+                    Games On Sale Today $15 Or Less
+                </Typography>
             </div>
             {
                 games ?
                     <div>
                         <Carousel
-                            className="rounded-xl hide "
+                            className="rounded-xl hide"
                             navigation={({ setActiveIndex, activeIndex, length }) => (
                                 <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
                                     {new Array(length).fill("").map((_, i) => (
@@ -59,22 +59,22 @@ export function CarouselWithContent(props) {
                             {
                                 games.map((eachGame, index) => {
                                     return (
-                                        <div className="relative h-full w-full ">
+                                        <div className="relative h-full w-full">
                                             <img
                                                 src={eachGame.thumb}
                                                 alt="pic 1"
-                                                className="h-full w-full object-cover pic" />
+                                                className="h-full w-full object-cover" />
                                             <div className="absolute inset-0 grid h-full w-full place-items-center bg-black/75">
                                                 <div className="w-3/4 text-center md:w-4/4">
-                                                    <Typography variant="h1" color="white" className="mb-4 text-3xl md:text-4xl lg:text-5xl">
+                                                    <Typography variant="h1" color="white" className="m-4 text-3xl md:text-4xl lg:text-5xl">
                                                         <p>{eachGame.title}</p>
                                                     </Typography>
-                                                    <Typography variant="lead" color="white" className="mb-12 opacity-70 size">
+                                                    <Typography variant="lead" color="white" className="mb-15 opacity-70 size">
                                                         <p>{summaries[index]}</p>
                                                     </Typography>
                                                 </div>
                                                 <div className="flex justify-center gap-2 mb-8">
-                                                    <Button size="lg" color="white" onClick={()=>{redirectShop(eachGame.steamAppID)}} >
+                                                    <Button size="lg" color="white" onClick={() => { redirectShop(eachGame.steamAppID) }} >
                                                         Shop This Game
                                                     </Button>
                                                 </div>
@@ -84,7 +84,7 @@ export function CarouselWithContent(props) {
                                 })
                             }
                         </Carousel>
-                        
+
                     </div> :
                     <p>Loading...</p>
             }

@@ -40,10 +40,10 @@
 
 .hide {
   overflow: hidden;
-  height: 450px;
-  width: 800px;
+  height: 600px;
+  width: 1000px;
   margin: 20px;
-  margin-left: 550px;
+  margin-left: 460px;
 
 }
 
@@ -52,7 +52,7 @@
 }
 
 .size {
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .move{
@@ -86,7 +86,24 @@
   font-size: 50px;
   display: flex;
   align-items: center;
-  margin-left: 500px;
+  margin-left: 400px;
   font-family:'Courier New', Courier, monospace;
   font-weight: bold;
+}
+
+.right{
+  margin-left: 750px;
+}
+
+.top{
+  margin-bottom: 120px;
+}
+
+.tall{
+  height: 100vh;
+  width: 100vw;
+}
+
+.slide{
+  margin-left: 600px;
 }

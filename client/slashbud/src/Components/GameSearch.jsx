@@ -113,8 +113,7 @@ const GameSearch = () => {
     }
 
     return (
-
-        <div className="flex-col bg-gradient-to-r from-cyan-600 to-purple-500 ... space ">
+        <div className=" bg-gradient-to-r from-cyan-600 to-purple-500 ... space  tall ">
             <NavBar />
             <div className="move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <h5 className=" m-b-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Search For A Game :D</h5>
@@ -166,7 +165,6 @@ const GameSearch = () => {
                                                     }
                                                 </select>
                                             </td>
-
                                         </tr>
                                     )
                                 })
@@ -176,7 +174,7 @@ const GameSearch = () => {
             </div>
 
             {/* Botttom Chart */}
-            <div class="relative overflow-x-auto shadow-md sm:rounded-sm" style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div class=" slide  relative overflow-x-aut shadow-md sm:rounded-sm" >
                 <table class="text-sm text-left text-gray-500 dark:text-gray-400 mb-10 ...ring-offset-4 ring-4">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -195,7 +193,7 @@ const GameSearch = () => {
                         {allGames ?
                             allGames.map((eachGame, Idx) => {
                                 return (
-                                    <tr key={Idx} class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                                    <tr key={Idx} class="bg-white border-b dark:bg-gray-900 dark:border-gray-700 mb-10">
                                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {eachGame.name}
                                         </th>

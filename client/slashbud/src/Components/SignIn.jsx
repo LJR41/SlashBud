@@ -4,7 +4,7 @@ import Login from './Login'
 
 const SignIn = () => {
   return (
-    <div className="bg-gradient-to-r from-cyan-600 to-purple-500 ... space ... flex ... justify-around">
+    <div className="bg-gradient-to-r from-cyan-600 to-purple-500 ... space ... flex ... justify-around tall">
         <div class="mt-6 ...">
             <Register />
         </div>

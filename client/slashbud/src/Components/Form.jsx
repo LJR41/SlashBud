@@ -42,7 +42,7 @@ export const Form = (props) => {
 
 
     return (
-        <div className="main_container ">
+        <div className="main_container">
 
             {/* container for Create New List Form */}
             <div className="bg-gradient-to-r from-cyan-600 to-purple-500 ... space p-4">
