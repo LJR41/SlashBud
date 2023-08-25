@@ -7,17 +7,24 @@ import NavBar from './NavBar'
 const AllListPage = () => {
     const [listList, setListList] = useState([])
     const [listId, setListId] = useState([])
-    const { id } = useParams()
+    // const { id } = useParams()
     const [toggleRefresh, setToggleRefresh] = useState(false)
-
+    const [childId, setChildId] = useState("")
+    
     useEffect(() => {
-        // Fetch the user's lists based on their ID
-        axios.get(`http://localhost:8000/api/lists/${id}`)
-            .then(response => {
-                setListList(response.data)
-                setListId(response.data.lists)
-            })
-            .catch(err => console.log(err))
+        const getUser = async()=>{
+            const res = await axios.get("http://localhost:8000/api/users/loggedin", { withCredentials: true })
+            const userData = res.data.user
+            const userId = await userData._id
+            const id = {userId}
+            setChildId(id)
+        const response = await axios.get(`http://localhost:8000/api/lists/${childId.userId}`)
+        const ListList = response.data
+        const ListId = response.data.lists
+        setListList(ListList)
+        setListId(ListId)
+        }
+        getUser()
     }, [toggleRefresh])
 
     const refreshPage = () => {
@@ -31,7 +38,7 @@ const AllListPage = () => {
 
     return (
         <div className="main_container">
-            <NavBar />
+            <NavBar ></NavBar>
 
             {/* container for Create New List Form */}
             <div>
