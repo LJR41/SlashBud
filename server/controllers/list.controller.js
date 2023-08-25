@@ -30,11 +30,11 @@ module.exports.allLists = (req, res) => {
     .catch(err =>res.status(400).json(err))
 }
 
-module.exports.addList = (req, res) => {
-    List.create(req.body)
-    .then(newList => res.json (newList))
-    .catch(err => res.status(400).json(err))
-}
+// module.exports.addList = (req, res) => {
+//     List.create(req.body)
+//     .then(newList => res.json (newList))
+//     .catch(err => res.status(400).json(err))
+// }
 
 module.exports.oneList = (req, res) => {
     const user = User.findOne({ _id: req.params.id }).populate("lists")

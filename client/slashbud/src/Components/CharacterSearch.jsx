@@ -21,27 +21,28 @@ const CharacterSearch = () => {
     console.log(charMug)
   }
   return (
-    <div><div >
-      <NavBar />
-      <form onSubmit={handleSubmit}>
-        <button type="submit">Search</button>
-        <input type="text" placeholder="Type here..." value={charSearch} onChange={e => { setCharSearch(e.target.value) }} />
-        <select name="genre" id="genre">
-          <option hidden>Genre</option>
-          <option value="FPS">FPS</option>
-          <option value="Horror">Horror</option>
-          <option value="Action">Action</option>
-          <option value="Simulation">Simulation</option>
-        </select>
-        <select name="platform" id="platform">
-          <option hidden>Platform</option>
-          <option value="PC">PC</option>
-          <option value="Playstation">Playstation</option>
-          <option value="Xbox">Xbox</option>
-          <option value="Switch">Switch</option>
-        </select>
-      </form>
-    </div>
+    <div>
+      <div>
+        <NavBar />
+        <form onSubmit={handleSubmit}>
+          <button type="submit">Search</button>
+          <input type="text" placeholder="Type here..." value={charSearch} onChange={e => { setCharSearch(e.target.value) }} />
+          <select name="genre" id="genre">
+            <option hidden>Genre</option>
+            <option value="FPS">FPS</option>
+            <option value="Horror">Horror</option>
+            <option value="Action">Action</option>
+            <option value="Simulation">Simulation</option>
+          </select>
+          <select name="platform" id="platform">
+            <option hidden>Platform</option>
+            <option value="PC">PC</option>
+            <option value="Playstation">Playstation</option>
+            <option value="Xbox">Xbox</option>
+            <option value="Switch">Switch</option>
+          </select>
+        </form>
+      </div>
       <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
         {foundChar ?
 
