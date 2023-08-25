@@ -86,10 +86,10 @@ const GameSearch = () => {
 
 
     return (
-   
+
         <div className="flex-col bg-gradient-to-r from-cyan-600 to-purple-500 ... space ">
-          <NavBar />
-            <div className="move ...ring-offset-2 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <NavBar />
+            <div className="move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <h5 className=" m-b-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Search For A Game :D</h5>
                 <div>
                     <form onSubmit={handleSubmit}>
@@ -131,43 +131,48 @@ const GameSearch = () => {
                                 })
                                 : <tr></tr>}</tbody>
                     </table>
-                </div> 
-          </div>
-            <div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <table >
-                    <thead>
+                </div>
+            </div>
+
+            {/* Botttom Chart */}
+            <div class="relative overflow-x-auto shadow-md sm:rounded-sm" style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <table class="text-sm text-left text-gray-500 dark:text-gray-400 mb-10 ...ring-offset-4 ring-4">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th>
+                            <th scope="col" class="px-6 py-3">
                                 Title
                             </th>
-                            <th>
+                            <th scope="col" class="px-6 py-3">
                                 Genre
                             </th>
-                            <th>
+                            <th scope="col" class="px-6 py-3">
                                 Platform(s)
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            allGames ?
-                                allGames.map((eachGame, Idx) => {
-                                    return (
-                                        <tr key={Idx}>
-                                            <td>{eachGame.name}</td>
-                                            <td>{allGenres &&
+                        {allGames ?
+                            allGames.map((eachGame, Idx) => {
+                                return (
+                                    <tr key={Idx} class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {eachGame.name}
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            {allGenres &&
                                                 formatGenre(eachGame)
-                                            }</td>
-                                            <td>{
-                                                allPlatforms &&
-                                                formatPlatforms(eachGame)
-                                            }</td>
-                                        </tr>
-                                    )
-                                })
-                                : <tr>
-                                    <td>Loading...</td>
-                                </tr>
+                                            }
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {allPlatforms &&
+                                                formatPlatforms(eachGame)}
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                            : <tr>
+                                <td>Loading...</td>
+                            </tr>
                         }
                     </tbody>
                 </table>
