@@ -30,7 +30,7 @@ const EditPage = () => {
 // }
   
 
-  // http://localhost:3000/onelist/64e81fae66671b2cc5de73f8
+  // http://localhost:3000/edit/64e81fae66671b2cc5de73f8
 
   return (
       <div className="flex-col bg-gradient-to-r from-cyan-600 to-purple-500 ... space ">
