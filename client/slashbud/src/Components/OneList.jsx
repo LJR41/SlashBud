@@ -25,18 +25,18 @@ const OneList = () => {
                 )
             })}
 
-            <div>
+            {/* <div>
                 <h3>{oneList.lists[0].listObjects[0]}</h3>
-                <img src={oneList.listObjects[0].img}></img>
+                <img src={oneList.listObjects[0].imageURL} alt={oneList.lists[0].listObjects[0]}></img>
                 {oneList.lists[0].isGames?<p>{oneList.listObjects[0].genre}</p>:<p>{oneList.listObjects[0].game}</p>}
             </div>
             <div>
-                <p>{oneList.lists[0].isPublic?"Yes":"No"}</p>
+                <p>{oneList.lists[0].isPublic?"Public List":"Private List"}</p>
                 <p>Last Updated: {oneList.lists[0].updatedAt}</p>
                 <p>First Created: {oneList.lists[0].createdAt}</p>
                 <button type='button'>UPDATE BUTTON NEEDS WORK</button>
                 <button type='button'>DELETE BUTTON NEEDS WORK</button>
-            </div>
+            </div> */}
         </div>
     )
 }

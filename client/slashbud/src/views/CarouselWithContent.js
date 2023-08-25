@@ -14,6 +14,7 @@ export function CarouselWithContent() {
     }, [])
 
     const apiCall = async () => {
+        try{
         const resp = await axios.get(`https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15&pageSize=5`)
         console.log(resp.data)
         setGames(resp.data)
@@ -25,9 +26,14 @@ export function CarouselWithContent() {
         for (const game of gamesList) {
             console.log(game)
             const gameData = await axios.post('http://localhost:8000/api/search/summary', { oneGame: game.title })
+            console.log(gameData)
             summaryList.push(gameData.data[0].summary)
         }
         setSummaries(summaryList)
+    }
+    catch(err){
+        console.log(err)
+    }
     }
 
     return (
