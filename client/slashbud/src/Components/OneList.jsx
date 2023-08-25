@@ -25,7 +25,7 @@ const OneList = () => {
                 )
             })}
 
-            <div>
+            {/* <div>
                 <h3>{oneList.lists[0].listObjects[0]}</h3>
                 <img src={oneList.listObjects[0].img}></img>
                 {oneList.lists[0].isGames?<p>{oneList.listObjects[0].genre}</p>:<p>{oneList.listObjects[0].game}</p>}
@@ -36,7 +36,7 @@ const OneList = () => {
                 <p>First Created: {oneList.lists[0].createdAt}</p>
                 <button type='button'>UPDATE BUTTON NEEDS WORK</button>
                 <button type='button'>DELETE BUTTON NEEDS WORK</button>
-            </div>
+            </div> */}
         </div>
     )
 }

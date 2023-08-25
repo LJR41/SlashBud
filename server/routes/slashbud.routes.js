@@ -28,10 +28,9 @@ const routes = (app) =>{
     app.post('/api/search/image', UserController.searchCharImage)
 
     // List Routes
-    app.get('/api/lists', ListController.allLists )
-    // app.post('/api/lists', ListController.addList )
+    app.get('/api/lists/:id', ListController.allLists )
     app.post('/api/lists/:id', ListController.newList)
-    app.get('/api/lists/:id', ListController.oneList)
+    app.get('/api/lists/one/:id', ListController.oneList)
     app.delete('/api/list/:id',ListController.deleteList)
 }
 // 3. include all the routes with the corresponding logic from controller
