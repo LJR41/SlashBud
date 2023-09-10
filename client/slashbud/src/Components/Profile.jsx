@@ -18,6 +18,13 @@ const Profile = () => {
             .catch(err => {
                 console.log(err)
             })
+        axios.get(`http://localhost:8000/api/user/${id}`)
+        .then(res => {
+            console.log(res.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }, [])
 
 

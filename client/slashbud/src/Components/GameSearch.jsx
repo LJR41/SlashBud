@@ -105,13 +105,13 @@ const GameSearch = () => {
             .catch(err => console.log(err))
     }
 
-    const addToList = (req) => {
-        console.log(userData, req)
-        // axios.patch(`http://localhost:8000/api/list/${userData}`,{})
-        // .then(response => {
-        //     console.log(response)
-        // })
-        // .catch(err => console.log(err))
+    const addToList = (listId, toBeAdded) => {
+        console.log(listId, toBeAdded)
+        axios.patch(`http://localhost:8000/api/list/${listId}`,{ title: toBeAdded})
+        .then(response => {
+            console.log(response)
+        })
+        .catch(err => console.log(err))
     }
 
     return (
@@ -168,7 +168,7 @@ const GameSearch = () => {
                                                     {
                                                         allLists.map((eachList, idx) => {
                                                             return (
-                                                                <option value="" onClick={() => { addToList() }}>{eachList.listName}</option>
+                                                                <option value="" onClick={() => { addToList(eachList._id,eachSale.title) }}>{eachList.listName}</option>
                                                             )
                                                         })
                                                     }
