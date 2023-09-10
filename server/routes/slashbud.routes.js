@@ -34,6 +34,7 @@ const routes = (app) =>{
     app.get('/api/lists/one/:id', ListController.oneList)
     app.delete('/api/list/:id',ListController.deleteList)
     app.patch('/api/list/:id', ListController.addToList)
+    app.patch('/api/characters/:id', ListController.addCharacterToList)
     app.patch('/api/list/:id/remove', ListController.removeFromList)
 }
 // 3. include all the routes with the corresponding logic from controller

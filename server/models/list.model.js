@@ -12,7 +12,7 @@ const ListSchema = new mongoose.Schema({
     listObjects: [
         {
         title: String,
-        // imageURL: String,
+        imageURL: String,
     }
     ],
     isGames:{

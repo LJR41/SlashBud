@@ -51,6 +51,15 @@ module.exports.addToList = (req,res) => {
     .catch(err => res.status(400).json(err))
 }
 
+module.exports.addCharacterToList = (req,res) => {
+    console.log(req.body)
+    List.findOneAndUpdate({_id:req.params.id},{ $push : {listObjects : {title: req.body.title, imageURL: req.body.imageURL}}})
+    .then(updatedList =>{
+        console.log(res.json(updatedList))
+    } )
+    .catch(err => res.status(400).json(err))
+}
+
 module.exports.removeFromList = (req,res) => {
     console.log(req.body)
     List.findOneAndUpdate({_id:req.params.id},{ $pull : {listObjects: {_id: req.body} }})

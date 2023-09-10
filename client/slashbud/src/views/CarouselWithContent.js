@@ -11,7 +11,7 @@ export function CarouselWithContent(props) {
 
 
     const redirectShop = (id) => {
-        window.open(`http://store.steampowered.com/app/${id}/`)
+        window.open(`https://www.cheapshark.com/redirect?dealID=${id}`)
     }
 
     useEffect(() => {
@@ -74,7 +74,7 @@ export function CarouselWithContent(props) {
                                                     </Typography>
                                                 </div>
                                                 <div className="flex justify-center gap-2 mb-8">
-                                                    <Button size="lg" color="white" onClick={() => { redirectShop(eachGame.steamAppID) }} >
+                                                    <Button size="lg" color="white" onClick={() => { redirectShop(eachGame.dealID) }} >
                                                         Shop This Game
                                                     </Button>
                                                 </div>

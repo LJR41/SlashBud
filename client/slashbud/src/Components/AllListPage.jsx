@@ -41,16 +41,15 @@ const AllListPage = () => {
             <NavBar />
 
             {/* container for Create New List Form */}
-            <div>
+            <div className="move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700e">
                 <Form refreshPage={refreshPage} />
             </div>
 
             {/* container for Your Lists section */}
-            <div className="move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700e">
-                <h4 className="text-xl font-bold mb-4">Your Lists</h4>
-            </div>
 
-            <table className='right move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700e'>
+
+            <label htmlFor="listTable" > <h4 className="text-xl font-bold mb-4 text-white">Your Lists</h4></label>
+            <table name="listTable" className='right move ...ring-offset-4 ring-4 items-center justify-center max-w-lg p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700e'>
                 <thead>
                     <tr>
                         <th className="p-3 text-center bg-gray-200">List Name</th>
@@ -81,8 +80,8 @@ const AllListPage = () => {
                                     )}
                                 </td>
                                 <td className="p-3 border">
-                                    <Link to={`/onelist/${eachList._id}`} className='link'> View List </Link> |
-                                    <Link to={`/edit/${eachList._id}`} className='link'> Edit List </Link>
+                                    <Link to={`/onelist/${eachList._id}`} class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-3 py-2.5 text-center mr-2 mb-2 "> View List </Link> 
+                                    <Link to={`/edit/${eachList._id}`} class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-3 py-2.5 text-center mr-2 mb-2 "> Edit List </Link>
                                 </td>
                             </tr>
                         ))
