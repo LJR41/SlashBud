@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const { secret } = require('../configs/jwt')
 // 2. export all the functions with placeholder
 module.exports.apiTest = (req, res) => {
-    res.json({ message: "SlashBud is running, 8/23" })
+    res.json({ message: "SlashBud is running, 9/9" })
 }
 module.exports.allUsers = (req, res) => {
     User.find()

@@ -10,6 +10,7 @@ const {authenticate} = require('../configs/jwt')
 const routes = (app) =>{
     app.get('/api/testing', UserController.apiTest)
     app.get('/api/users', UserController.allUsers)
+    app.get('/api/user/:id', UserController.oneUser)
     app.post('/api/register', UserController.register)
     app.post('/api/login', UserController.login)
     app.get("/api/users/loggedin", authenticate, UserController.loggedUser)
@@ -33,6 +34,7 @@ const routes = (app) =>{
     app.get('/api/lists/one/:id', ListController.oneList)
     app.delete('/api/list/:id',ListController.deleteList)
     app.patch('/api/list/:id', ListController.addToList)
+    app.patch('/api/list/:id/remove', ListController.removeFromList)
 }
 // 3. include all the routes with the corresponding logic from controller
 module.exports = routes

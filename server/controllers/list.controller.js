@@ -15,7 +15,7 @@ module.exports.newList = (req,res) => {
         .then(list=>{
             const user = User.findOne({_id:userId})
                 .then(foundUser=>{
-                    console.log(foundUser)
+                    console.log(user)
                     foundUser.lists.push(newList)
                     foundUser.save({ validateBeforeSave: false })
                     .then(response => res.json(response))
@@ -44,7 +44,18 @@ module.exports.deleteList = (req, res)=>{
 
 module.exports.addToList = (req,res) => {
     console.log(req.body)
-    List.findOneAndUpdate({_id:req.params.id},{ $push : req.body })
-    .then(updatedList => res.json(updatedList))
+    List.findOneAndUpdate({_id:req.params.id},{ $push : {listObjects :req.body }})
+    .then(updatedList =>{
+        console.log(res.json(updatedList))
+    } )
+    .catch(err => res.status(400).json(err))
+}
+
+module.exports.removeFromList = (req,res) => {
+    console.log(req.body)
+    List.findOneAndUpdate({_id:req.params.id},{ $pull : {listObjects: {_id: req.body} }})
+    .then(updatedList =>{
+        console.log(res.json(updatedList))
+    } )
     .catch(err => res.status(400).json(err))
 }

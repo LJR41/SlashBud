@@ -7,12 +7,12 @@ const ListSchema = new mongoose.Schema({
     listName:{
         type: String,
         required: [true, "Please give this list a name"],
-        maxlength: [15, "Please keep the name less than 15 characters"]
+        maxlength: [30, "Please keep the name less than 30 characters"]
     },
     listObjects: [
         {
         title: String,
-        imageURL: String,
+        // imageURL: String,
     }
     ],
     isGames:{
