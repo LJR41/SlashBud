@@ -54,9 +54,16 @@ const GameSearch = () => {
             const res = await axios.get("http://localhost:8000/api/users/loggedin", { withCredentials: true })
             const response = await axios.get(`http://localhost:8000/api/lists/${res.data.user._id}`)
             setUserData(response.data._id)
-            setAllLists(response.data.lists)
-            // console.log(userData)
-            // console.log(allLists)
+
+            // Filter through user lists, to only lists of games
+            const findGames = (response.data.lists)
+            let gamesList = []
+            for (let i = 0; i < findGames.length; i++) {
+                if (findGames[i].isGames == true) {
+                    gamesList.push(findGames[i])
+                }
+            }
+            setAllLists(gamesList)
         }
 
 
@@ -107,11 +114,11 @@ const GameSearch = () => {
 
     const addToList = (listId, toBeAdded) => {
         console.log(listId, toBeAdded)
-        axios.patch(`http://localhost:8000/api/list/${listId}`,{ title: toBeAdded})
-        .then(response => {
-            console.log(response)
-        })
-        .catch(err => console.log(err))
+        axios.patch(`http://localhost:8000/api/list/${listId}`, { title: toBeAdded })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => console.log(err))
     }
 
     return (
@@ -159,7 +166,7 @@ const GameSearch = () => {
                                         <tr>
                                             <td class="border border-slate-700 ..."> {eachSale.title}</td>
                                             <td class="border border-slate-700 ..."> {eachSale.steamRatingPercent}</td>
-                                            <td class="border border-slate-700 ..." >{(eachSale.isOnSale == 1) ? "Yes": "No"}</td>
+                                            <td class="border border-slate-700 ..." >{(eachSale.isOnSale == 1) ? "Yes" : "No"}</td>
                                             <td class="border border-slate-700 ..." >{eachSale.salePrice}</td>
                                             <td class="border border-slate-700 ..." >{eachSale.normalPrice}</td>
                                             <td class="border border-slate-700 ..." >
@@ -168,7 +175,7 @@ const GameSearch = () => {
                                                     {
                                                         allLists.map((eachList, idx) => {
                                                             return (
-                                                                <option value="" onClick={() => { addToList(eachList._id,eachSale.title) }}>{eachList.listName}</option>
+                                                                <option value="" onClick={() => { addToList(eachList._id, eachSale.title) }}>{eachList.listName}</option>
                                                             )
                                                         })
                                                     }

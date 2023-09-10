@@ -10,13 +10,23 @@ const CharacterSearch = () => {
   const [charMug, setCharMug] = useState()
   const [userData, setUserData] = useState()
   const [allLists, setAllLists] = useState()
+  
 
   useEffect(() => {
     const getUser = async () => {
       const res = await axios.get("http://localhost:8000/api/users/loggedin", { withCredentials: true })
       const response = await axios.get(`http://localhost:8000/api/lists/${res.data.user._id}`)
       setUserData(res.data.user._id)
-      setAllLists(response.data.lists)
+
+      // Filter through user lists, to only lists of characters
+      const findCharacters = (response.data.lists)
+      let charactersList = []
+      for (let i = 0; i < findCharacters.length; i++){
+        if(findCharacters[i].isCharacters == true){
+          charactersList.push(findCharacters[i])
+        }
+      }
+      setAllLists(charactersList)
 
     }
 
@@ -38,7 +48,7 @@ const CharacterSearch = () => {
 
   }
   const addToList = (id) => {
-    axios.patch(`http://localhost:8000/api/list/${id}`, { title: foundChar[0].name, imageURL: charMug })
+    axios.patch(`http://localhost:8000/api/characters/${id}`, { title: foundChar[0].name, imageURL: charMug })
       .then(response => console.log(response))
       .catch(err => console.log(err))
   }
@@ -79,6 +89,7 @@ const CharacterSearch = () => {
                 allLists.map((eachList, idx) => {
                   return (
                     <option value="" onClick={() => { addToList(eachList._id) }}>{eachList.listName}</option>
+                    
                   )
                 })
               }
