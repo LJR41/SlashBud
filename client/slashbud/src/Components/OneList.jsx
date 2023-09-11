@@ -8,11 +8,12 @@ const OneList = () => {
     const [oneList, setOneList] = useState([])
     const [listItems, setListItems] = useState([])
     const [searchedItems, setSearchedItems] = useState([])
+    const [refresh, setRefresh] = useState (new Date())
 
     useEffect(() => {
 
         getListData()
-    }, [])
+    }, [refresh])
 
     const getListData = async () => {
         const response = await axios.get(`http://localhost:8000/api/lists/one/${id}`)
@@ -43,12 +44,13 @@ const OneList = () => {
         window.open(`https://www.cheapshark.com/redirect?dealID=${id}`)
     }
 
-    const removeFromList = (toBeRemoved) => {
+    const removeFromList = (toBeRemoved) => { 
         axios.patch(`http://localhost:8000/api/list/${id}/remove`, { _id: toBeRemoved })
             .then(response => {
                 console.log(response)
             })
             .catch(err => console.log(err))
+        setRefresh(new Date())
     }
 
     // http://localhost:3000/onelist/64e81fae66671b2cc5de73f8
