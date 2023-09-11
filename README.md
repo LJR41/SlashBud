@@ -22,6 +22,12 @@ All of these posed as daunting challenges to overcome, yet our bold company **ne
 
 There is always more work to be done, edges of CSS to sharpen, bugs to stamp out, new routes to establish. Which our enbattled crew may take, or perhaps a shadowy group of ninjas from The Dojo will continue this true and honest work.
 
+## The Live-Action Adaptation
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=z22w_uI-8W4" target="_blank"><img src="http://img.youtube.com/vi/z22w_uI-8W4/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" />
+</a>
+
 ## The Building Blocks
 * MongoDB
 * Express
